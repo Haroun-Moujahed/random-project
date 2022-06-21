@@ -48,7 +48,7 @@ function LoginPage() {
       setEmptyPasswordField(true);
     } else {
       axios
-        .post(`${process.env.REACT_APP_API_URL}/login`, {
+        .post(`${process.env.REACT_APP_API_URL}/admin/login`, {
           email,
           password,
         })

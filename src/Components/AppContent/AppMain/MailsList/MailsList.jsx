@@ -6,6 +6,8 @@ import { ProgressSpinner } from "primereact/progressspinner";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 
+import { toast } from "react-toastify";
+
 import axiosWithAuth from "../../../../Utils/AxiosWithAuth";
 
 import "./MailsList.css";
@@ -21,6 +23,7 @@ function MailsList() {
         setMailsList(response.data);
       })
       .catch((err) => {
+        toast.error("Une erreur est survenue!");
         throw err;
       });
   }, []);
@@ -41,6 +44,7 @@ function MailsList() {
           });
       })
       .catch((err) => {
+        toast.error("Email invalide ou existe déjà!");
         throw err;
       });
   };

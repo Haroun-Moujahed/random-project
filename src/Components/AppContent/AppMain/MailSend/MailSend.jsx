@@ -6,6 +6,8 @@ import { FileUpload } from "primereact/fileupload";
 import { AutoComplete } from "primereact/autocomplete";
 import { Button } from "primereact/button";
 
+import { toast } from "react-toastify";
+
 import axiosWithAuth from "../../../../Utils/AxiosWithAuth";
 
 import "./MailSend.css";
@@ -62,9 +64,11 @@ function MailSend() {
     selectedMails.forEach((mail) => {
       formData.append("to", mail);
     });
-    attachments.forEach((attachment) => {
-      formData.append("attachments", attachment);
-    });
+    if (attachments) {
+      attachments.forEach((attachment) => {
+        formData.append("attachments", attachment);
+      });
+    }
     axiosWithAuth
       .post(`${process.env.REACT_APP_API_URL}/admin/send-email`, formData, {
         headers: {
@@ -75,6 +79,7 @@ function MailSend() {
         console.log("mail sent successfully!");
       })
       .catch((err) => {
+        toast.error("Une erreur est survenue!");
         throw err;
       });
   };
