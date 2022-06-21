@@ -1,0 +1,28 @@
+.mailSendSection {
+  width: 100%;
+  padding: 2%;
+  background-color: #eaedef;
+}
+.mailForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mailForm > * {
+  width: 50%;
+  margin: 1% !important;
+}
+.mailForm textarea {
+  height: 15rem;
+}
+.mailAutoComplete ul {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.sendBtnContainer {
+  display: flex;
+  justify-content: center;
+}

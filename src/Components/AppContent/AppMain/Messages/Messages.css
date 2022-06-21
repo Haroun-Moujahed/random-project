@@ -1,0 +1,16 @@
+.messagesSection {
+  width: 100%;
+  padding: 2%;
+  background-color: black;
+}
+#messagesTable {
+  font-family: "Rubik", sans-serif;
+}
+
+.p-datatable-wrapper {
+  border: 2px #dee2e6 solid !important;
+  border-radius: 10px !important;
+}
+.detailsBtnLink {
+  text-decoration: none;
+}

@@ -1,0 +1,35 @@
+.pro-icon {
+  animation: none !important;
+}
+.pro-icon svg {
+  fill: black;
+}
+.pro-menu-item:hover {
+  background-color: #0f589c;
+  font-weight: 500 !important;
+}
+.pro-menu {
+  padding-top: 0px !important;
+}
+ul {
+  gap: 11px;
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 28px 0 !important;
+  flex-direction: column;
+}
+.active *,
+.active svg {
+  fill: white;
+  background-color: #0f589c;
+}
+
+.active .pro-icon-wrapper * {
+  background-color: #0f589c;
+}
+
+$sidebar-bg-color: rgb(0, 0, 0);
+$icon-bg-color: white;
+$highlight-color: white;
+@import "~react-pro-sidebar/dist/scss/styles.scss";

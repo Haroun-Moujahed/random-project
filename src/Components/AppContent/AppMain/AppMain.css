@@ -1,0 +1,26 @@
+main {
+  display: flex;
+}
+.detailsSection {
+  padding: 5%;
+  background-color: #eaedef;
+  min-height: 100%;
+}
+
+.detailsSection > * {
+  margin: 2% 0px;
+}
+.infoBtn:hover {
+  color: white !important;
+  background-color: #3b82f6 !important;
+  border: 1px white solid;
+}
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+.detailsCreatedDate {
+  text-align: right;
+}

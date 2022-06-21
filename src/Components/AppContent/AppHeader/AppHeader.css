@@ -1,0 +1,21 @@
+.appHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e314b;
+  max-height: 80px;
+  min-width: 100%;
+}
+.appHeaderLogo {
+  width: 20%;
+  padding: 3.5% 3%;
+  margin-left: 5%;
+}
+#logOutBtn {
+  margin: 0px 5%;
+  font-family: "Rubik", "sans-serif";
+}
+.logo_header {
+  width: 22%;
+  margin: 25px;
+}

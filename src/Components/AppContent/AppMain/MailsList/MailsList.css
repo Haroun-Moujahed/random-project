@@ -1,0 +1,15 @@
+.mailsSection {
+  width: 100%;
+  padding: 2%;
+  background-color: #eaedef;
+}
+#mailInput {
+  width: 30%;
+  margin-right: 2%;
+}
+.mailInputContainer {
+  margin: 3% 0px 2%;
+}
+.p-paginator-pages {
+  display: flex;
+}
