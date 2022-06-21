@@ -48,7 +48,6 @@ function MailSend() {
   };
 
   const handleFileRemove = (event) => {
-    console.log(event);
     setAttachments(
       attachments.filter(
         (attachment) => attachment.objectURL !== event.file.objectURL
