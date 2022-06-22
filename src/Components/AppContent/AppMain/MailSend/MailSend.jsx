@@ -5,6 +5,7 @@ import { InputTextarea } from "primereact/inputtextarea";
 import { FileUpload } from "primereact/fileupload";
 import { AutoComplete } from "primereact/autocomplete";
 import { Button } from "primereact/button";
+import { Checkbox } from "primereact/checkbox";
 
 import { toast } from "react-toastify";
 
@@ -19,6 +20,7 @@ function MailSend() {
   const [mailSubject, setMailSubject] = useState("");
   const [mailContent, setMailContent] = useState("");
   const [attachments, setAttachments] = useState(null);
+  const [sendToAll, setSendToAll] = useState(false);
 
   useEffect(() => {
     axiosWithAuth
@@ -56,37 +58,52 @@ function MailSend() {
   };
 
   const handleSubmit = () => {
-    var formData = new FormData();
-    formData.append("attachments", attachments);
-    formData.append("subject", mailSubject);
-    formData.append("content", mailContent);
-    selectedMails.forEach((mail) => {
-      formData.append("to", mail);
-    });
-    if (attachments) {
-      attachments.forEach((attachment) => {
-        formData.append("attachments", attachment);
+    if (!sendToAll && !selectedMails.length) {
+      toast.error(
+        "L'adresse mail du destinataire est vide ou n'existe pas dans la liste"
+      );
+    } else {
+      var formData = new FormData();
+      formData.append("attachments", attachments);
+      formData.append("subject", mailSubject);
+      formData.append("content", mailContent);
+      selectedMails.forEach((mail) => {
+        formData.append("to", mail);
       });
+      if (attachments) {
+        attachments.forEach((attachment) => {
+          formData.append("attachments", attachment);
+        });
+      }
+      axiosWithAuth
+        .post(`${process.env.REACT_APP_API_URL}/admin/send-email`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then(() => {
+          toast.success("Votre mail a été envoyé avec succès");
+          console.log("mail sent successfully!");
+        })
+        .catch((err) => {
+          toast.error("Une erreur est survenue!");
+          throw err;
+        });
     }
-    axiosWithAuth
-      .post(`${process.env.REACT_APP_API_URL}/admin/send-email`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((response) => {
-        console.log("mail sent successfully!");
-      })
-      .catch((err) => {
-        toast.error("Une erreur est survenue!");
-        throw err;
-      });
   };
   const chooseOptions = { label: "Selectionnez", icon: "pi pi-fw pi-folder" };
   return (
     <section className="mailSendSection">
-      <div className="mailForm">
+      <div id="mailForm">
+        <div id="sendToAllCheckBox">
+          <Checkbox
+            onChange={(e) => setSendToAll(e.checked)}
+            checked={sendToAll}
+          ></Checkbox>
+          <label className="p-checkbox-label">Envouyer à tous</label>
+        </div>
         <AutoComplete
+          disabled={sendToAll ? true : false}
           multiple
           value={selectedMails}
           suggestions={suggestionMails}

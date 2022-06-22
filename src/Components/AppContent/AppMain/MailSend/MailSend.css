@@ -3,16 +3,17 @@
   padding: 2%;
   background-color: #eaedef;
 }
-.mailForm {
+#mailForm {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
-.mailForm > * {
+#mailForm > * {
   width: 50%;
-  margin: 1% !important;
+  margin: 1%;
 }
-.mailForm textarea {
+#mailForm textarea {
   height: 15rem;
 }
 .mailAutoComplete ul {
@@ -25,4 +26,15 @@
 .sendBtnContainer {
   display: flex;
   justify-content: center;
+}
+#sendToAllCheckBox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  top: -1%;
+  z-index: 3;
+}
+#sendToAllCheckBox label {
+  margin-left: 2%;
 }
